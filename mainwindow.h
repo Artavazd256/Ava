@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QFile>
+#include "hexstream.h"
 
 namespace Ui {
 class MainWindow;
@@ -19,11 +20,11 @@ public:
 
 private: // fields
     Ui::MainWindow *ui;
-    QFile * file = NULL;
     QMenu * menuFile = NULL;
     QMenu * menuEdit = NULL;
     QMenu * menuView = NULL;
     QMenu * menuHelp = NULL;
+    HexStream * hexStream;
 
 private: // function
     void initFileMenu();

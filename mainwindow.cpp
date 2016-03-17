@@ -20,10 +20,10 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
-    delete file;
     delete menuFile;
     delete menuEdit;
     delete menuView;
+    delete hexStream;
 }
 
 void MainWindow::initMenu()
@@ -46,16 +46,9 @@ void MainWindow::initFileMenu() {
  */
 void MainWindow::openFile()
 {
-    QString fileName = QFileDialog::getOpenFileName(this);
-    assert(fileName != NULL);
-    file = new QFile(fileName, this);
-    assert(file != NULL);
-    file->open(QIODevice::ReadOnly | QIODevice::WriteOnly);
-    while (!file->atEnd()) {
-        QString line = file->readLine();
-        ui->hexEdit->append(line.toLocal8Bit().toHex());
-    }
-
+    QString filePath = QFileDialog::getOpenFileName(this);
+    assert(filePath != NULL);
+    hexStream = new HexStream(this, filePath) ;
 }
 
 /**

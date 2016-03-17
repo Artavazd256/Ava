@@ -17,10 +17,10 @@
    <widget class="QTextEdit" name="hexEdit">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>20</x>
       <y>10</y>
-      <width>321</width>
-      <height>301</height>
+      <width>401</width>
+      <height>291</height>
      </rect>
     </property>
     <property name="html">
@@ -31,29 +31,6 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QTextBrowser" name="textBrowser">
-    <property name="geometry">
-     <rect>
-      <x>450</x>
-      <y>10</y>
-      <width>91</width>
-      <height>301</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QTextBrowser" name="textBrowser_2">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>10</y>
-      <width>91</width>
-      <height>301</height>
-     </rect>
-    </property>
-   </widget>
-   <zorder>textBrowser_2</zorder>
-   <zorder>hexEdit</zorder>
-   <zorder>textBrowser</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
