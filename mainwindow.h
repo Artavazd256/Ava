@@ -32,6 +32,8 @@ private: // function
 private slots:
     void openFile();
     void exit();
+    void changLittleEndian(bool b);
+    void changBigEndian(bool b);
 };
 
 #endif // MAINWINDOW_H

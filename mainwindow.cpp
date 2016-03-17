@@ -4,6 +4,8 @@
 #include <QFileDialog>
 #include <assert.h>
 #include <QPainter>
+#include "utils.h"
+#include <byteswap.h>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -38,6 +40,8 @@ void MainWindow::initFileMenu() {
     menuFile->addAction(exit);
     connect(open, SIGNAL(triggered()), this, SLOT(openFile()));
     connect(exit, SIGNAL(triggered()), this, SLOT(exit()));
+    connect(ui->bigEndianRadioButton, SIGNAL(clicked(bool)), this, SLOT(changBigEndian(bool))); // TODO
+    connect(ui->littleEndianRadioButton, SIGNAL(clicked(bool)), this, SLOT(changLittleEndian(bool))); // TODO
 }
 
 /**
@@ -63,6 +67,22 @@ void MainWindow::exit()
     ::exit(0);
 }
 
+void MainWindow::changLittleEndian(bool b)
+{
+    hexStream->setMode(Ava::little_endian);
+    QString data = hexStream->getHexData(4);
+    assert(data != NULL);
+    ui->hexEdit->setText(data);
+    qDebug()<<"Little endian";
+}
 
+void MainWindow::changBigEndian(bool b)
+{
+    hexStream->setMode(Ava::big_endian);
+    QString data = hexStream->getHexData(4);
+    assert(data != NULL);
+    ui->hexEdit->setText(data);
+    qDebug()<<"Big endian";
 
+}
 

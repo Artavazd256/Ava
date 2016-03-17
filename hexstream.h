@@ -1,6 +1,7 @@
 #ifndef HEXSTREAM_H
 #define HEXSTREAM_H
 
+
 #include <QObject>
 #include <QFile>
 
@@ -58,16 +59,21 @@ public:
      * @param path
      */
     void openFile(QString &path);
+    Ava::ModeRead getMode() const;
+    void setMode(const Ava::ModeRead &value);
+
 signals:
 
 public slots:
 
 private:
     QString path = NULL;
+    QString hexData = NULL;
     QFile * file;
     Ava::ModeRead mode;
     QString big_endian(int size);
     QString little_endian(int size);
+    QString splitBySize(QString data, int size);
 };
 
 
