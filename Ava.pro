@@ -14,9 +14,11 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    hexstream.cpp
+    hexstream.cpp \
+    utils.cpp
 
 HEADERS  += mainwindow.h \
-    hexstream.h
+    hexstream.h \
+    utils.h
 
 FORMS    += mainwindow.ui

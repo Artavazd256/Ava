@@ -49,6 +49,9 @@ void MainWindow::openFile()
     QString filePath = QFileDialog::getOpenFileName(this);
     assert(filePath != NULL);
     hexStream = new HexStream(this, filePath) ;
+    QString data = hexStream->getHexData(4);
+    assert(data != NULL);
+    ui->hexEdit->setText(data);
 }
 
 /**

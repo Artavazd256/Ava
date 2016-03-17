@@ -2,6 +2,7 @@
 #include <QFile>
 #include <assert.h>
 #include <QMessageBox>
+#include "utils.h"
 
 HexStream::HexStream(QObject *parent, Ava::ModeRead mode) : QObject(parent)
 {
@@ -39,31 +40,47 @@ void HexStream::setPath(const QString &path)
 }
 
 void HexStream::openFile(QString &path) {
+    assert(path != NULL);
     file = new QFile(path);
     bool isAvailable = file->open(QIODevice::ReadOnly | QIODevice::WriteOnly);
     if(!isAvailable)
     {
         QString msg = "Thie " + path + " file not open";
-        QMessageBox msgBox;
-        msgBox.setText(msg);
-        msgBox.exec();
+        Utils::showMessage(msg);
     }
 }
 
 QString HexStream::getHexData(int size)
 {
+    assert(size != NULL);
+    QString out;
     switch(mode)
     {
     case Ava::big_endian:
-
+        out = big_endian(size);
         break;
     case Ava::little_endian:
-
-        break;
-    default:
-        throw;
+        out = little_endian(size);
         break;
     }
+    assert(out != NULL);
+    return out;
+}
+
+
+QString HexStream::big_endian(int size)
+{
+    assert(size != NULL);
+    while(!file->atEnd())
+    {
+    }
+    return NULL;
+}
+
+QString HexStream::little_endian(int size)
+{
+    assert(size != NULL);
+    return NULL;
 }
 
 

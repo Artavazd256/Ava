@@ -66,6 +66,8 @@ private:
     QString path = NULL;
     QFile * file;
     Ava::ModeRead mode;
+    QString big_endian(int size);
+    QString little_endian(int size);
 };
 
 
